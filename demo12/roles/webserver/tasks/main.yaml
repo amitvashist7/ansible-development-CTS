@@ -1,0 +1,39 @@
+---
+- name: Install Apache Packages on RedHat Nodes
+  yum: name=httpd state=present
+  when: ansible_os_family == "RedHat"
+
+- name: Install Apache Packages on Ubuntu Nodes
+  apt: name=apache2 state=present
+  when: ansible_os_family == "debain"
+
+- name: Start Apache Service
+  service: name=httpd state=started
+
+- name: Checking the Document Root Avalabilty
+  command: ls {{doc_root}}
+  register: result1
+  ignore_errors: yes
+
+- debug: msg="Unable to find Document Root"
+  when: result1|failed
+  
+- name: Create Document Root Dir. Location
+  file: path={{doc_root}} state=directory
+  when: result1|failed
+
+- name: Deploy Custom Apache Configuration
+  template: src=templates/httpd.j2 dest=/etc/httpd/conf/httpd.conf
+  notify: 
+    - Restart Apache
+    - amit
+
+- name: Deploy Sample Sites Files
+  template: src=templates/index.j2 dest={{doc_root}}/index.html
+  notify: 
+    - nothing
+  
+- name: Deploy Sample Sites Files
+  template: src=templates/info.j2 dest={{doc_root}}/info.html
+  
+- debug: msg="Username is varible prompt is{{username}}"

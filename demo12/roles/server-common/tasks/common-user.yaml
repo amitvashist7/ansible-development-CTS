@@ -1,0 +1,11 @@
+---
+
+- name: Create Common Users
+  user: name={{ item }} password="$1$GDfEYwhT$fsSu2/Y.TO903JgPKOjj0."
+
+  with_items:
+    - amit
+    - vashist
+    - user01
+    - jboss
+    - tomcat

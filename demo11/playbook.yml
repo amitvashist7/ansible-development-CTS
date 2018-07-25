@@ -73,7 +73,7 @@
     template: src=templates/info.j2 dest={{doc_root}}/info.html
   
   
-  - debug: msg="Username is varible prompt is -{{username}}"
+  - debug: msg="Username is varible prompt is{{username}}"
 
   handlers:
   - name: Restart Apache
