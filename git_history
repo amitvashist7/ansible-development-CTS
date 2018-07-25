@@ -1,0 +1,18 @@
+  917  git init
+  918  yum install git 
+  919  git init
+  920  git add README.md
+  921  git commit -m "first commit"
+  922  git config --global user.email "amitvashist7@gmail.com"
+  923  git config --global user.name "Amit Vashist"
+  924  git remote add origin https://github.com/amitvashist7/ansible-development-CTS.git
+  925  git push -u origin master
+  927  git push -u origin master --force
+  931  git clone https://github.com/amitvashist7/ansible-development-CTS.git
+  936  git add . 
+  937  git status 
+  938  git commit -m "first Commit"
+  939  git push -u origin master --force
+  943  git add .
+  944  git commit -m "Anible Demo."
+  945  git push -u origin master --force
