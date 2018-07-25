@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  sudo: yes
+  roles:
+  - server-common
+  - hosts
+
+- include: webserver.yaml
+  tags: web
+- include: dbserver.yaml
+  tags: db

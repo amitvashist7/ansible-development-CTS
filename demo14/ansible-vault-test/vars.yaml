@@ -1,0 +1,8 @@
+---
+mysql_user: {{ ansible_vault_mysql_user }}
+mysql_pass: {{ ansible_vault_mysql_pass }}
+mysql_host: localhost
+mysql_connection: local
+os_family: Redhat
+my_app_name: wordpress
+my_midelware: tomcat

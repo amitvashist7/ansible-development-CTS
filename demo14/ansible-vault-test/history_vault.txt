@@ -1,0 +1,33 @@
+1215  mkdir ansible-vault-test
+ 1216  cd ansible-vault-test/
+ 1217  ls
+ 1218  ansible-vault create vault.yaml
+ 1219  ls -ltr
+ 1220  cat vault.yaml
+ 1221  ansible-vault view vault.yaml
+ 1222  ansible-vault edit vault.yaml
+ 1223  ansible-vault view vault.yaml
+ 1224  cat vault.yaml
+ 1225  ansible-vault decrypt vault.yaml
+ 1226  cat vault.yaml
+ 1227  ansible-vault encrypt vault.yaml
+ 1228  cat vault.yaml
+ 1229  ansible-vault rekey vault.yaml
+ 1230  cat vault.yaml
+ 1231  ansible-vault view vault.yaml
+ 1232  ls
+ 1233  vi vars.yaml
+ 1234  ls
+ 1235  rm -rf vault.yaml
+ 1236  ls
+ 1237  vim vault.yaml
+ 1238  cat vars.yaml
+ 1239  vim vault.yaml
+ 1240  ls -ltr
+ 1241  cat vars.yaml
+ 1242  cat vault.yaml
+ 1243  ansible-vault encrypt vault.yaml
+ 1244  ls
+ 1245  cat vars.yaml
+ 1246  ls
+ 1247  cat vault.yam

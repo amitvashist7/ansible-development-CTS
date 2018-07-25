@@ -1,0 +1,6 @@
+---
+
+- hosts: prod
+  sudo: yes
+  roles:
+  - webserver
