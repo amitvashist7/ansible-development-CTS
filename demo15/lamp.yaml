@@ -1,0 +1,7 @@
+---
+
+- hosts: web
+  sudo: yes
+  roles:
+  - lamp-dep
+  - lamp
