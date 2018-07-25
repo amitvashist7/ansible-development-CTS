@@ -1,0 +1,77 @@
+---
+# Update 1: When Clause
+# Update 2: Introducting Temaplates
+# Update 3: Introducting Handlers
+# Update 4: Introducting Variables & Custom Apache Configuration
+# Update 5: Create Document Root Dir & Place the site file into new Doc. Root
+# Update 6: New Document Root Dir. 
+# Update 7: Deploy info.j2 new dynamic web page. 
+# Update 8: Introducting META to Flush the Handlers by Force.
+# Update 9: Introducting Nothing Handler.
+
+- hosts: web:db
+  sudo: yes
+  vars:
+    http_port: 80
+    doc_root: /var/www/html/CTS
+    doc_dir: /CTS/  
+  
+  tasks:
+  - name: Install Apache Packages on RedHat Nodes
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+
+
+  - name: Install Apache Packages on Ubuntu Nodes
+    apt: name=apache2 state=present
+    when: ansible_os_family == "debain"
+
+  - name: Start Apache Service
+    service: name=httpd state=started
+    ignore_errors: yes
+
+  - name: Deploy Custom Apache Configuration
+    template: src=templates/httpd.j2 dest=/etc/httpd/conf/httpd.conf
+    notify: 
+      - Restart Apache
+      - amit
+
+  - name: Meta Force to Flush Handlers
+    meta: flush_handlers
+
+  - name: Create Document Dir. Location
+    file: path={{doc_root}} state=directory
+
+  - name: Deploy Sample Sites Files
+    template: src=templates/index.j2 dest={{doc_root}}/index.html
+    notify: 
+      - nothing
+  
+  - name: Deploy Sample Sites Files
+    template: src=templates/info.j2 dest={{doc_root}}/info.html
+
+  handlers:
+  - name: Restart Apache
+    service: name=httpd state=restarted
+  - name: nothing
+    service: name=httpd state=restarted
+  - name: amit
+    command: 'echo "Hello Handlers" > {{doc_root}}/abc.html'
+
+- hosts: db
+  sudo: yes
+
+  tasks:
+  - name: Install Mariadb Packages
+    yum: name=mariadb-server state=present
+
+  - name: Start MariDB Service
+    service: name=mariadb state=started
+
+
+- hosts: web:db
+  sudo: yes
+
+  tasks:
+  - name: Stop the Firewall
+    service: name=firewalld state=stopped enabled=False

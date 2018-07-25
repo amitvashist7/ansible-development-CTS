@@ -1,0 +1,11 @@
+---
+
+- hosts: web
+  sudo: yes
+  
+  tasks:
+  - name: Install Apache Packages
+    yum: name=httpd state=present
+
+  - name: Start Apache Service
+    service: name=httpd state=started

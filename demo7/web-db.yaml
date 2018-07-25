@@ -1,0 +1,23 @@
+---
+
+- hosts: web
+  sudo: yes
+  
+  tasks:
+  - name: Install Apache Packages
+    yum: name=httpd state=present
+
+  - name: Start Apache Service
+    service: name=httpd state=started
+
+
+
+- hosts: db
+  sudo: yes
+
+  tasks:
+  - name: Install Mariadb Packages
+    yum: name=mariadb-server state=present
+
+  - name: Start MariDB Service
+    service: name=mariadb state=started

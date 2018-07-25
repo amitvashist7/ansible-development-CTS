@@ -1,0 +1,18 @@
+web01 ansible_ssh_host=172.31.0.110
+db01  ansible_ssh_host=172.31.0.120
+
+
+[web]
+172.31.0.110
+
+[db]
+172.31.0.120
+
+
+[prod:children]
+web
+db
+
+[prod:vars]
+ansible_ssh_user=vagrant
+ansible_ssh_pass=redhat
