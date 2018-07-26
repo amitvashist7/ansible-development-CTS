@@ -1,1 +1,1 @@
-Introduction to Anisble Vault.
+Introduction to Anisble Vault & Rolling Updates

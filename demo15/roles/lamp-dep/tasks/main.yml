@@ -16,18 +16,21 @@
   service: name=mariadb state=started enabled=yes
 
 - name: Deploy MySQL Config
-  template: src=templates/my.cnf-2.j2 dest=/root/.my.cnf
+  template: src=templates/my.cnf.j2 dest=/root/.my.cnf
+  run_once: true
 
-- name: Setup WordPress DB
-  mysql_db: name={{ wp_mysql_db }} state=present
+
 
 - name: Set root Password
-  mysql_user: login_password={{ mysql_root_password }} check_implicit_admin=yes name=root host={{ item }}
+  mysql_user: login_password={{ mysql_root_password }} check_implicit_admin=yes name=root host={{ item }} password={{ mysql_root_password }} state=present
   with_items:
     - localhost
     - 127.0.0.1
     - ::1
 
+
+- name: Deploying Updated MySQL Config
+  template: src=templates/my.cnf-2.j2 dest=/root/.my.cnf
 
 
 - name: Reload privilege tables
@@ -64,6 +67,10 @@
   with_items:
     - FLUSH PRIVILEGES
   changed_when: False
+
+
+- name: Setup WordPress DB
+  mysql_db: name={{ wp_mysql_db }} state=present
 
 
 - name: Create MariaDB User info. 
