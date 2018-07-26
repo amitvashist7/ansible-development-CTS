@@ -1,0 +1,6 @@
+---
+# defaults file for lamp-dep
+wp_mysql_db: MyWP
+wp_mysql_user: wpUser
+wp_mysql_password: redhat
+#mysql_root_password: redhat@123

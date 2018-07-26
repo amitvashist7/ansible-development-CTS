@@ -1,1 +1,1 @@
-Introduction to Anisble Vault & Rolling Updates
+Introduction to Anisble Vault & WordPress LAMP Stack Deployment. 

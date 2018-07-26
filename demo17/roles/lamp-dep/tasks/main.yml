@@ -1,0 +1,95 @@
+---
+# tasks file for lamp-dep
+
+# Local Excution.
+- name: Local Action Task 
+  local_action: shell echo "Welcome To LAMP Deployment on" {{ inventory_hostname }} >> /tmp/local_action.txt
+
+
+
+# Delegation.
+- name: Remote-Delegate Task 
+  shell: echo "Welcome To LAMP Deployment on" {{ inventory_hostname }} >> /root/delegate_tast.txt
+  delegate_to: webserver01.example.com
+
+
+- name: Dep for WordPress Lamp Stack
+  yum: name={{ item }}  state=present
+  
+  with_items:
+  - httpd
+  - mariadb-server
+  - mariadb
+  - php
+  - php-mysql
+  - MySQL-python
+
+- name: Bring the MariaDB UP
+  service: name=mariadb state=started enabled=yes
+
+- name: Deploy MySQL Config
+  template: src=templates/my.cnf.j2 dest=/root/.my.cnf
+  run_once: true
+
+
+
+- name: Set root Password
+  mysql_user: login_password={{ mysql_root_password }} check_implicit_admin=yes name=root host={{ item }} password={{ mysql_root_password }} state=present
+  with_items:
+    - localhost
+    - 127.0.0.1
+    - ::1
+
+
+- name: Deploying Updated MySQL Config
+  template: src=templates/my.cnf-2.j2 dest=/root/.my.cnf
+
+
+- name: Reload privilege tables
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - FLUSH PRIVILEGES
+  changed_when: False
+
+- name: Remove anonymous users
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - DELETE FROM mysql.user WHERE User=''
+  changed_when: False
+
+
+- name: Disallow root loging from remote
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ( 'localhost', '127.0.0.1', '::1')
+  changed_when: False
+
+
+
+- name: Remove Test Databse & access 
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - DROP DATABASE IF EXISTS test
+    - DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%' 
+  changed_when: False
+
+
+- name: Reload privilege tables
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - FLUSH PRIVILEGES
+  changed_when: False
+
+
+- name: Setup WordPress DB
+  mysql_db: name={{ wp_mysql_db }} state=present
+
+
+- name: Create MariaDB User info. 
+  mysql_user: 
+    login_user=root
+    login_password={{ mysql_root_password }}
+    name={{ wp_mysql_user }}
+    password={{ wp_mysql_password }}
+    priv='*.*:ALL,GRANT'
+    state=present

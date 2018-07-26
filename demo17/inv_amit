@@ -1,0 +1,24 @@
+webserver01.example.com ansible_ssh_host=172.31.0.110
+dbserver01.example.com ansible_ssh_host=172.31.0.120
+webserver02.example.com ansible_ssh_host=172.31.0.150
+
+
+[web]
+webserver01.example.com 
+
+
+[db]
+dbserver01.example.com 
+
+[prod]
+webserver01.example.com 
+dbserver01.example.com 
+dbserver02.example.com 
+dbserver03.example.com 
+dbserver04.example.com 
+dbserver05.example.com 
+dbserver06.example.com 
+webserver02.example.com 
+webserver03.example.com 
+webserver04.example.com 
+webserver05.example.com 

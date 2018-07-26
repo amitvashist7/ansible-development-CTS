@@ -1,0 +1,6 @@
+---
+http_port: 80
+doc_root: /var/www/html/vashist
+doc_dir: /vashist/
+username: "Amit Vashist"
+

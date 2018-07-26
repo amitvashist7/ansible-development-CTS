@@ -1,0 +1,8 @@
+---
+
+- name: Restart Apache
+  service: name=httpd state=restarted
+- name: nothing
+  service: name=httpd state=restarted
+- name: amit
+  command: 'echo "Hello Handlers" > {{doc_root}}/abc.html'

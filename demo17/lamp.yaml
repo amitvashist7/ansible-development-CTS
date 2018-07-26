@@ -1,0 +1,11 @@
+---
+
+- hosts: prod
+  sudo: yes
+  serial:
+  - 1
+  - 5
+  - 20 
+  roles:
+  - lamp-dep
+  - lamp
