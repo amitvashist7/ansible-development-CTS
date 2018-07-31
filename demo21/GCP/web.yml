@@ -1,0 +1,8 @@
+---
+# compute-video-demo-ansible
+- name: Deploy Apache and custom html page
+  hosts: gce_instances_ips
+  become: yes
+  become_method: sudo
+  roles:
+    - simple-web

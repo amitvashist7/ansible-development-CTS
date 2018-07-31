@@ -1,0 +1,12 @@
+---
+
+- hosts: "tag_anible-gce"
+  sudo: yes
+  vars_files:
+    - gce_vars/auth
+    - gce_vars/machines
+    - gce_vars/zonea
+#    - gce_vars/zoneb
+  roles:
+  - lamp-dep
+  - lamp

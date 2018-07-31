@@ -1,0 +1,5 @@
+---
+# GCP Ansible Demo.
+- include: gce-instances.yml
+- include: webserver.yaml
+- include: gce-network.yml

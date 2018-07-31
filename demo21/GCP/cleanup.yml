@@ -1,0 +1,51 @@
+---
+# compute-video-demo-ansible
+- name: Destroy all demo resources
+  hosts: localhost
+  gather_facts: False
+  vars_files:
+    - gce_vars/auth
+    - gce_vars/machines
+    - gce_vars/zonea
+    - gce_vars/zoneb
+    - gce_vars/lb
+  tasks:
+    - name: Destroy the instances in the first zone
+      gce:
+        instance_names: "{{ names_zonea }}"
+        zone: "{{ zonea }}"
+        project_id: "{{ project_id }}"
+        credentials_file: "{{ credentials_file }}"
+        service_account_email: "{{ service_account_email }}"
+        state: absent
+    - name: Destroy the instances in the second zone
+      gce:
+        instance_names: "{{ names_zoneb }}"
+        zone: "{{ zoneb }}"
+        project_id: "{{ project_id }}"
+        credentials_file: "{{ credentials_file }}"
+        service_account_email: "{{ service_account_email }}"
+        state: absent
+    - name: Destroy the firewall rule
+      gce_net:
+        fwname: all-http
+        project_id: "{{ project_id }}"
+        credentials_file: "{{ credentials_file }}"
+        service_account_email: "{{ service_account_email }}"
+        state: absent
+    - name: Destroy the load-balancer
+      gce_lb:
+        name: lb
+        region: "{{ region }}"
+        project_id: "{{ project_id }}"
+        credentials_file: "{{ credentials_file }}"
+        service_account_email: "{{ service_account_email }}"
+        state: absent
+    - name: Make sure the persistent disks are destroyed
+      gce_pd: name={{ item.name }} zone={{ item.zone }} state=absent
+              project_id={{ project_id }} credentials_file={{ credentials_file }} service_account_email={{ service_account_email }}
+      with_items:
+        - { name: "myinstance1", zone: "asia-south1-a" }
+        - { name: "myinstance3", zone: "asia-south1-a" }
+        - { name: "myinstance2", zone: "asia-south1-b" }
+        - { name: "myinstance4", zone: "asia-south1-b" }

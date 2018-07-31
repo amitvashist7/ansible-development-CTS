@@ -1,0 +1,4 @@
+---
+# Variables defined for us-central1-b
+names_zoneb: myinstance2,myinstance4
+zoneb: asia-south1-b

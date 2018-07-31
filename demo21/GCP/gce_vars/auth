@@ -1,0 +1,5 @@
+---
+# Google Compute Engine required authentication global variables
+# (Replace 'YOUR_PROJECT_ID' with the Project ID used in creating your GCP project.)
+project_id: ecstatic-armor-208314
+service_account_email: ansible-demo@ecstatic-armor-208314.iam.gserviceaccount.com

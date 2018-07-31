@@ -1,0 +1,47 @@
+---
+# compute-video-demo-ansible
+- name: Create Compute Engine instances
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars_files:
+    - gce_vars/auth
+    - gce_vars/machines
+    - gce_vars/zonea
+    - gce_vars/zoneb
+  tasks:
+    - name: Bring up the instances in the first zone
+      gce:
+        instance_names: "{{ names_zonea }}"
+        machine_type: "{{ machine_type }}"
+        image: "{{ image }}"
+        zone: "{{ zonea }}"
+        project_id: "{{ project_id }}"
+        credentials_file: "{{ credentials_file }}"
+        service_account_email: "{{ service_account_email }}"
+        tags: anible-gce
+      register: gcea
+    - name: Bring up the instances in the second zone
+      gce:
+        instance_names: "{{ names_zoneb }}"
+        machine_type: "{{ machine_type }}"
+        image: "{{ image }}"
+        zone: "{{ zoneb }}"
+        project_id: "{{ project_id }}"
+        credentials_file: "{{ credentials_file }}"
+        service_account_email: "{{ service_account_email }}"
+        tags: anible-gce
+      register: gceb
+  post_tasks:
+    - name: Wait for SSH for instances in first zone
+      wait_for: delay=1 host={{ item.public_ip }} port=22 state=started timeout=30
+      with_items: "{{ gcea.instance_data }}"
+    - name: Save host data for first zone
+      add_host: hostname={{ item.public_ip }} groupname=gce_instances_ips
+      with_items: "{{ gcea.instance_data }}"
+    - name: Wait for SSH for instances in second zone
+      wait_for: delay=1 host={{ item.public_ip }} port=22 state=started timeout=30
+      with_items: "{{ gceb.instance_data }}"
+    - name: Save host data for second zone
+      add_host: hostname={{ item.public_ip }} groupname=gce_instances_ips
+      with_items: "{{ gceb.instance_data }}"

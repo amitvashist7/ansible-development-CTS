@@ -1,0 +1,4 @@
+---
+# Variables defined for us-central1-a
+names_zonea: myinstance1,myinstance3
+zonea: asia-south1-a
