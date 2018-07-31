@@ -1,0 +1,48 @@
+---
+# Update 1: When Clause
+# Update 2: Introducting Temaplates
+# Update 3: Introducting Handlers
+
+
+- hosts: web:db
+  sudo: yes
+  
+  tasks:
+  - name: Install Apache Packages on RedHat Nodes
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+
+
+  - name: Install Apache Packages on Ubuntu Nodes
+    apt: name=apache2 state=present
+    when: ansible_os_family == "debain"
+
+  - name: Start Apache Service
+    service: name=httpd state=started
+
+  - name: Deploy Sample Sites Files
+    template: src=templates/index.j2 dest=/var/www/html/index.html
+    notify: 
+      - Restart Apache
+
+  handlers:
+  - name: Restart Apache
+    service: name=httpd state=restarted
+
+- hosts: db
+  sudo: yes
+
+  tasks:
+  - name: Install Mariadb Packages
+    yum: name=mariadb-server state=present
+
+  - name: Start MariDB Service
+    service: name=mariadb state=started
+
+
+- hosts: web:db
+  sudo: yes
+
+  tasks:
+  - name: Stop the Firewall
+    service: name=firewalld state=stopped enabled=False

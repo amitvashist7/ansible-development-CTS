@@ -1,0 +1,4 @@
+---
+# Variables defined for load-balancer
+region: asia-south1
+members: asia-south1-a/myinstance1,asia-south1-a/myinstance3,asia-south1-b/myinstance2,asia-south1-b/myinstance4
