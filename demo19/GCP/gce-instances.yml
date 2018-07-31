@@ -1,5 +1,5 @@
 ---
-# compute-video-demo-ansible
+# GCP Instance Creation
 - name: Create Compute Engine instances
   hosts: localhost
   connection: local
