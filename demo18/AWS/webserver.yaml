@@ -1,0 +1,6 @@
+---
+
+- hosts: "tag_Name_EC2_Ansible_App"
+  sudo: yes
+  roles:
+  - webserver
