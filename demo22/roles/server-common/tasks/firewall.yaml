@@ -1,0 +1,10 @@
+---
+
+- name: Stop the Firewall on RedHat Nodes
+  service: name=firewalld state=stopped enabled=False
+  when: ansible_os_family == "RedHat"
+
+
+- name: Stop the Firewall on Ubuntu Nodes
+  service: name=ufw state=stopped enabled=False
+  when: ansible_os_family == "Debain"

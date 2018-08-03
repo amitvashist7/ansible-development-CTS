@@ -1,0 +1,26 @@
+---
+# tasks file for lamp
+
+- name: Create Dir to Downlaod Tomcat. 
+  command: mkdir -p /opt/SP/apps/tomcat
+
+ 
+- name: Install Java 1.8 
+  yum: name=java-1.8.0-openjdk state=present 
+
+- name: Download Wordpress
+  copy: src=templates/tomcat.tar.gz dest=/opt/SP/apps/tomcat.tar.gz mode=0644
+
+- name: Extract Tomcat
+  command: "tar zxf /opt/SP/apps/tomcat.tar.gz  -C /opt/SP/apps/tomcat --strip-components 1"
+
+- name: Copy Jenkins Project War Files
+  copy: src=templates/apps dest=/opt/SP/apps/tomcat/webapps/ mode=0644
+  notify: 
+  - Restart Tomcat
+
+- name: Copy Jenkins Project War Files
+  copy: src=templates/sample.war dest=/opt/SP/apps/tomcat/webapps/ mode=0644
+
+- name: Copy Jenkins Project War Files
+  copy: src=templates/petclinic.war dest=/opt/SP/apps/tomcat/webapps/ mode=0644
