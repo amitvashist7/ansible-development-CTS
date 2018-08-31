@@ -1,0 +1,7 @@
+---
+# handlers file for win-tasks
+
+- name: w3svc reset
+  win_service:
+    name: w3svc
+    state: restarted

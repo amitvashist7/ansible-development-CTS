@@ -1,0 +1,15 @@
+ec2:
+  region: ap-south-1
+  credentials: my-aws-ssh-key
+  image: ami-0912f71e06545ad88
+  instance_type: t2.micro 
+  sg: ansibleSG
+  subnet: subnet-e18f1489
+  public_ip: yes
+  count: 2
+  tags:
+    Name: EC2_Ansible
+  volumes: 
+    - device_name: /dev/xvda
+      volume_type: standard
+      volume_size: 8

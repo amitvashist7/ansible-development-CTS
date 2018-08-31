@@ -1,0 +1,15 @@
+---
+# tasks file for ec2_instance
+ec2_instance:
+  region: "{{ region }}"
+  key_name: "{{ key_name }}"
+  vpc_subnet_id: "{{ vpc_subnet_id }}"
+  instance_type: "{{ instance_type }}"
+  security_group: default
+  network:
+    assign_public_ip: true
+  image_id: "{{ image }}"
+  user_data:  "{{ lookup('file', '{{ user_data }}') }}"
+  instance_role: "{{ instance_role }}"
+  tags:
+    image: "{{ tag_image }}"

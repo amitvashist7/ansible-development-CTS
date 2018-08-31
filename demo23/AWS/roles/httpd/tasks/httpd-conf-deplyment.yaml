@@ -1,0 +1,21 @@
+---
+- name: Check the Document Root
+  command: ls {{doc_root}}
+  register: result1
+  ignore_errors: yes
+
+- debug: msg="Warning \:\ Mentioned Document Root Doesn't exits."
+  when: result1|failed
+
+- name: Now Creating Missing Site Location
+  file: path={{doc_root}} state=directory
+  when: result1|failed
+
+- name: Deploy Apache Configuration.
+  template: src=templates/httpd_aws.j2 dest=/etc/httpd/conf/httpd.conf
+  notify:
+    - Restart Apache-1
+    - update
+
+- name: Meta Force to Flush Handkers
+  meta: flush_handlers

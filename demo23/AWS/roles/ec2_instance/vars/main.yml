@@ -1,0 +1,12 @@
+region: ap-south-1
+credentials: my-aws-ssh-key
+image: ami-0bee97edb48c1f93f
+instance_type: t2.micro 
+sg: ansiblewinSG
+subnet: subnet-e18f1489
+public_ip: yes
+count: 1
+user_data: user_data/winrm.txt
+instance_role: ec2_iam_role
+tags:
+  Name: EC2_Ansible_Windows

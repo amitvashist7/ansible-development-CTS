@@ -1,0 +1,4 @@
+---
+# tasks file for server-common
+- include: ntp.yaml
+- include: common-user.yaml

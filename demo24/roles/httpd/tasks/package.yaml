@@ -1,0 +1,4 @@
+---
+- name: Install Apache Pkg. on RedHat Family
+  yum: name={{webserver_handler}} state=present
+  when: ansible_os_family == "RedHat"

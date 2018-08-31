@@ -1,0 +1,3 @@
+---
+- name: Start the Apache Service
+  service: name={{webserver_handler}} state=started enabled=True

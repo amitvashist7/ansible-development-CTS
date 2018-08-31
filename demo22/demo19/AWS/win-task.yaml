@@ -1,0 +1,5 @@
+---
+
+- hosts: "tag_Name_Win_Ansible"
+  roles:
+    - role: win-tasks 

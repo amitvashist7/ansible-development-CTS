@@ -1,0 +1,8 @@
+---
+
+- hosts: "tag_Name_EC2_Ansible"
+  pre_tasks:
+  - include: set_fact.yaml
+  roles:
+    - role: httpd
+      when: ansible_os_family == "RedHat"

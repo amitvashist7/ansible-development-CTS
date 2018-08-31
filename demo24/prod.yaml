@@ -1,0 +1,17 @@
+---
+- hosts: prod:&web
+  serial: 
+  - 1 
+  - 5
+  pre_tasks: 
+  - include: roles/apache/tasks/local-action.yaml
+  roles: 
+  - apache
+  post_tasks:
+  - include: roles/apache/tasks/remote-action.yaml
+
+
+- hosts: prod:&db
+  roles: 
+  - mariadb
+  - docker

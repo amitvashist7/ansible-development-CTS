@@ -1,0 +1,26 @@
+---
+- name: Ensuring SNMP is started
+  win_service:
+    name: snmptrap
+    state: started
+
+- name: Installing IIS
+  win_feature:
+    name: "Web-Server"
+    state: present
+    restart: yes
+    include_sub_features: yes
+    include_management_tools: yes
+
+#- name: Download webpage
+#  win_get_url:
+#  url: 'http://www.mariomayhem.com/downloads/wallpapers/7/nsmb_wp7_1280.jpg'
+#  dest: 'C:/inetpub/wwwroot/mario.jpg'
+#  notify:
+#    - w3svc reset
+
+- name: Restarting the web app pool
+  win_iis_webapppool:
+    name: "DefaultAppPool"
+    state: restarted
+

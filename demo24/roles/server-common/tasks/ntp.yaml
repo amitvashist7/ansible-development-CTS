@@ -1,0 +1,7 @@
+---
+
+- name: Intall NTP Clinet
+  yum: name=ntp state=present
+
+- name: Start NTP Clinet Service
+  service: name=ntpd state=started

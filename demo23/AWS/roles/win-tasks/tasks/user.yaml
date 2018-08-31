@@ -1,0 +1,7 @@
+---
+# tasks file for win-tasks
+- name: Create an user
+  win_user:
+    name: "amitvashist"
+    password: "redhat@123"
+    state: present

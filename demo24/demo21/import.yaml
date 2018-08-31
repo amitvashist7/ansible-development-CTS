@@ -1,0 +1,5 @@
+---
+- hosts: 172.31.0.100
+  tasks: 
+    - name: Import Inventory
+      command: awx-manage inventory_import --source=/var/lib/awx/projects/_21__ansible_cts_git_project/demo21/inventory-new --inventory-id=10 --overwrite

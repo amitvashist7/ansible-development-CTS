@@ -1,0 +1,7 @@
+---
+# tasks file for mariadb
+- name: Install MariaDB Pkg.
+  yum: name=mariadb-server state=present
+
+- name: Start the MariaDB Service
+  service: name=mariadb state=started enabled=True

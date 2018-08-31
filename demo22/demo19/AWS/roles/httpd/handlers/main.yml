@@ -1,0 +1,9 @@
+---
+# handlers file for apache
+
+- name: Restart Apache-1
+  service: name=httpd state=restarted enabled=True
+- name: Restart Apache-2
+  service: name=httpd state=restarted enabled=True
+- name: update
+  shell: '/bin/echo "Hello Update Handler" > {{doc_root}}/abc.html'

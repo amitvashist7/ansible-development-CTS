@@ -1,0 +1,11 @@
+[defaults]
+host_key_checking = False
+private_key_file = /root/my-aws-ssh-key.pem
+#inventory = inventory
+#sudo_user = root  
+
+[privilege_escalation]
+become=True
+become_method=sudo
+become_user=root
+become_ask_pass=False

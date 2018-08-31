@@ -1,0 +1,16 @@
+---
+
+- name: setting fact Debain apache2 
+  set_fact: 
+    web_group: "www-data"
+    web_owner: "www-data"
+    webserver_handler: "apache2"
+  when: ansible_os_family == "Debian"
+
+
+- name: setting fact RedHat apache2 
+  set_fact: 
+    web_group: "root"
+    web_owner: "root"
+    webserver_handler: "httpd"
+  when: ansible_os_family == "RedHat"

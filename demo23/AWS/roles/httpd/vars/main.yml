@@ -1,0 +1,8 @@
+---
+# vars file for apache
+#
+
+http_port: 80
+doc_root: /var/www/html/ansible-role-site-1
+doc_dir: /ansible-role-site-1/
+username: "Ansible-Roles-Test-1"

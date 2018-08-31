@@ -1,0 +1,9 @@
+---
+- hosts: uat:&web
+  roles: 
+  - apache
+
+
+- hosts: uat:&db
+  roles: 
+  - mariadb

@@ -1,0 +1,12 @@
+---
+- hosts: all 
+  roles: 
+  - server-common
+  - firewall 
+
+
+
+- include: prod.yaml
+  tags: prod-env
+- include: uat.yaml
+  tags: uat-env
