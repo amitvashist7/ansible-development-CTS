@@ -1,5 +1,4 @@
 ---
-
 - include: common-user.yaml
-- include: firewall.yaml 
+# - include: firewall.yaml
 - include: ntp.yaml

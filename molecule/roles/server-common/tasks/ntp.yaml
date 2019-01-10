@@ -2,6 +2,8 @@
 
 - name: Install NTP Clinet
   yum: name=ntp state=present
+  when: ansible_os_family == "RedHat"
 
 - name: Start NTP Service
   service: name=ntpd state=started
+  when: ansible_os_family == "RedHat"
