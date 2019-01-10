@@ -1,0 +1,25 @@
+---
+# tasks file for ansible-apache
+- name: "Ensure required packages are present"
+  yum:
+    name: "{{ pkg_list }}"
+    state: present
+
+- name: "Ensure latest index.html is present"
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+
+- name: "Ensure httpd service is started and enabled"
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  with_items: "{{ svc_list }}"
+
+- name: "Whitelist http in firewalld"
+  firewalld:
+    service: http
+    state: enabled
+    permanent: true
+    immediate: true

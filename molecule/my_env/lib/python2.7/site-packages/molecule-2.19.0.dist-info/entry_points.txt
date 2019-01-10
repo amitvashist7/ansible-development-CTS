@@ -1,0 +1,3 @@
+[console_scripts]
+molecule = molecule.shell:main
+

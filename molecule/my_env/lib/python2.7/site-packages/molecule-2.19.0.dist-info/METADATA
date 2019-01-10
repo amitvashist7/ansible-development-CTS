@@ -1,0 +1,162 @@
+Metadata-Version: 2.0
+Name: molecule
+Version: 2.19.0
+Summary: Molecule aids in the development and testing of Ansible roles.
+Home-page: https://github.com/metacloud/molecule
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: System :: Systems Administration
+Classifier: Topic :: Utilities
+Requires-Dist: ansible-lint (==3.4.23)
+Requires-Dist: anyconfig (==0.9.7)
+Requires-Dist: cerberus (==1.2)
+Requires-Dist: click (==6.7)
+Requires-Dist: click-completion (==0.3.1)
+Requires-Dist: colorama (==0.3.9)
+Requires-Dist: cookiecutter (==1.6.0)
+Requires-Dist: flake8 (==3.5.0)
+Requires-Dist: python-gilt (==1.2.1)
+Requires-Dist: Jinja2 (==2.10)
+Requires-Dist: pbr (==4.1.0)
+Requires-Dist: pexpect (==4.6.0)
+Requires-Dist: PyYAML (==3.13)
+Requires-Dist: sh (==1.12.14)
+Requires-Dist: six (==1.11.0)
+Requires-Dist: tabulate (==0.8.2)
+Requires-Dist: testinfra (==1.16.0)
+Requires-Dist: tree-format (==0.1.2)
+Requires-Dist: yamllint (==1.11.1)
+Requires-Dist: psutil (==5.4.6); (sys_platform!="win32" and sys_platform!="cygwin")
+
+********
+Molecule
+********
+
+.. image:: https://badge.fury.io/py/molecule.svg
+   :target: https://badge.fury.io/py/molecule
+   :alt: PyPI Package
+
+.. image:: https://readthedocs.org/projects/molecule/badge/?version=latest
+   :target: https://molecule.readthedocs.io/en/latest/
+   :alt: Documentation Status
+
+.. image:: https://img.shields.io/badge/license-MIT-brightgreen.svg
+   :target: LICENSE
+   :alt: Repository License
+
+Molecule is designed to aid in the development and testing of `Ansible`_ roles.
+Molecule provides support for testing with multiple instances, operating
+systems and distributions, virtualization providers, test frameworks and
+testing scenarios.  Molecule is opinionated in order to encourage an approach
+that results in consistently developed roles that are well-written, easily
+understood and maintained.
+
+Molecule uses `Ansible`_ `playbooks`_ to exercise the `role`_ and its
+associated tests.  Molecule supports any provider [#]_ that `Ansible`_
+supports.
+
+.. [#]
+
+   Providers can be bare-metal, virtual, cloud or containers.  If Ansible can
+   use it, Molecule can test it.  Molecule simply leverages Ansible's module
+   system to manage instances.
+
+.. _`playbooks`: https://docs.ansible.com/ansible/playbooks.html
+.. _`role`: http://docs.ansible.com/ansible/playbooks_roles.html
+
+Quick Start
+===========
+
+Installing
+----------
+
+.. image:: https://asciinema.org/a/161970.png
+   :target: https://asciinema.org/a/161970?speed=5&autoplay=1&loop=1
+   :alt: Installing
+
+Creating a new role
+-------------------
+
+.. image:: https://asciinema.org/a/161976.png
+   :target: https://asciinema.org/a/161976?speed=5&autoplay=1&loop=1
+   :alt: Creating a new role
+
+Testing a new role
+-------------------
+
+.. image:: https://asciinema.org/a/161977.png
+   :target: https://asciinema.org/a/161977?speed=5&autoplay=1&loop=1
+   :alt: Testing a new role
+
+Testing an existing role
+------------------------
+
+.. image:: https://asciinema.org/a/AkQ4KhxuGAxwn1YJX3tM5BZld.png
+   :target: https://asciinema.org/a/AkQ4KhxuGAxwn1YJX3tM5BZld?speed=5&autoplay=1&loop=1
+   :alt: Testing an existing role
+
+Docker in Docker
+----------------
+
+.. image:: https://asciinema.org/a/172713.png
+   :target: https://asciinema.org/a/172713?speed=5&autoplay=1&loop=1
+   :alt: Testing an existing role
+
+Documentation
+=============
+
+https://molecule.readthedocs.io/
+
+Contact
+=======
+
+IRC
+---
+
+Join us in the #molecule-users channel on `freenode`_.
+
+.. _`freenode`: https://freenode.net
+
+Forums
+------
+
+* `molecule-users`_
+
+.. _`molecule-users`: https://groups.google.com/forum/#!forum/molecule-users
+
+Ansible Support
+===============
+
+Molecule requires Ansible version 2.4 or later.
+
+.. _`Ansible`: https://docs.ansible.com
+
+License
+=======
+
+`MIT`_
+
+.. _`MIT`: https://github.com/metacloud/molecule/blob/master/LICENSE
+
+The logo is licensed under the `Creative Commons NoDerivatives 4.0 License`_.
+If you have some other use in mind, contact us.
+
+.. _`Creative Commons NoDerivatives 4.0 License`: https://creativecommons.org/licenses/by-nd/4.0/
+
+
+

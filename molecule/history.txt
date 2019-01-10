@@ -1,0 +1,184 @@
+    1  apt-get update && sudo apt-get -y upgrade
+    2  apt-get update -y 
+    3  apt-get install -y python-pip libssl-dev 
+    4  pip install --user molecule
+    5  apt-get install -y libffi-dev git
+    6  ls
+    7  mkdir myproject 
+    8  cd myproject/
+    9  ls
+   10  pip install -U -e . 
+   11  'pip install --upgrade pip'
+   12  pip install --upgrade pip
+   13  ls
+   14  apt-get  install docker.io 
+   15  python -m pip install virtualenv
+   16  python -m virtualenv my_env
+   17  ls
+   18  source my_env/bin/activate
+   19  uname -a 
+   20  python -m pip install molecule docker
+   21  ls
+   22  molecule init role -r ansible-apache -d docker
+   23  ls
+   24  cd ansible-apache/
+   25  ls
+   26  molecule test 
+   27  ls
+   28  cat tasks/main.yml 
+   29  cat molecule/default/playbook.yml 
+   30  cat molecule/default/molecule.yml 
+   31  ls
+   32  cat defaults/main.yml 
+   33  ls
+   34  vim tasks/main.yml 
+   35  mkdir templates
+   36  vim templates/index.html.j2
+   37  vim vars/main.yml
+   38  vim molecule/default/molecule.yml 
+   39  ls
+   40  vim molecule/default/tests/test_default.py
+   41  docker ps 
+   42  docker ps -a 
+   43  molecule test
+   44  vim molecule/default/tests/test_default.py
+   45  molecule test
+   46  vim molecule/default/tests/test_default.py
+   47  docker ps 
+   48  docker ps -a 
+   49  docker ps -a
+   50  docker images 
+   51  molecule test
+   52  ls
+   53  history 
+   54  ls
+   55  cd ..
+   56  l
+   57  ls
+   58  molecule init role -r ansible-apache-2.1 -d docker --help
+   59  molecule init role -r ansible-apache-2.1 -d docker --ci jenkins
+   60  molecule lint 
+   61  ls
+   62  cd ansible-apache/
+   63  ls
+   64  molecule lint 
+   65  ls
+   66  cd ../../
+   67  ls
+   68  git clone https://github.com/amitvashist7/ansible-development-CTS.git
+   69  ls
+   70  cd ansible-development-CTS/
+   71  ls
+   72  cd demo17/roles/* /root/myproject/
+   73  ls
+   74  cd - 
+   75  cp -rf demo17/roles/ /root/myproject/
+   76  ls
+   77  cd -
+   78  cd /root/myproject/
+   79  ls
+   80  cd roles/
+   81  ls
+   82  cd dbserver/
+   83  ls
+   84  cd tasks/
+   85  ls
+   86  cat main.yaml 
+   87  ls
+   88  cd ..
+   89  ls
+   90  cd ..
+   91  ks
+   92  ls
+   93  cd dbserver/
+   94  ls
+   95  molecule init scenario -r dbserver
+   96  ls
+   97  cd molecule/
+   98  ls
+   99  cd default/
+  100  ls
+  101  vim molecule.yml 
+  102  ls
+  103  cp -rf ../../../../ansible-apache/molecule/default/molecule.yml .
+  104  ls
+  105  cat molecule.yml 
+  106  ls
+  107  cat  ../../../../ansible-apache/molecule/default/tests/test_default.py
+  108  cat  ../../../../ansible-apache/molecule/default/tests/test_default.py tests/test_default.py
+  109  cp -rf   ../../../../ansible-apache/molecule/default/tests/test_default.py tests/test_default.py
+  110  ls
+  111  cd tests/
+  112  ls
+  113  cat ../../../tasks/
+  114  cat ../../../tasks/main.yaml 
+  115  vim test_default.py
+  116  cd ..
+  117  ls
+  118  cd ..
+  119  ls
+  120  cd ..
+  121  ls
+  122  cd ..
+  123  ls
+  124  cd ..
+  125  ls
+  126  molecule test 
+  127* 
+  128  cd roles/dbserver/
+  129  ls
+  130  molecule test 
+  131  ls
+  132  vim tasks/main.yaml 
+  133  ls
+  134  vim molecule/default/tests/test_default.py
+  135  molecule test 
+  136  ls
+  137  cd ..
+  138  ls
+  139  cd dbserver/
+  140  ls
+  141  cd molecule/
+  142  ls
+  143  cd default/
+  144  ls
+  145  cat playbook.yml 
+  146  cd ..
+  147  ls
+  148  cd ..
+  149  ls
+  150  molecule list 
+  151  molecule list --scenario-name foo
+  152  molecule list --scenario-name dbserver
+  153  molecule list --format yaml
+  154  molecule --debug test
+  155  ls
+  156  cd ..
+  157  ls
+  158  cd server-common/
+  159  ls
+  160  cd tasks/
+  161  ls
+  162  cat common-user.yaml 
+  163  ls
+  164  cat firewall.yaml 
+  165  ls
+  166  cd ..
+  167  ls
+  168  cd ..
+  169  ls
+  170  cd ..
+  171  ls
+  172  cd ..
+  173  ls
+  174  cd ansible-development-CTS/
+  175  ls
+  176  cp -rf ../myproject molecule
+  177  ls
+  178  cd molecule/
+  179  ls
+  180  cd ..
+  181  l
+  182  ls
+  183  git add . 
+  184  history > molecule/history.txt
